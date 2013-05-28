@@ -23,12 +23,13 @@ import java.util.Locale;
 import javax.speech.Central;
 import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
+import de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory;
 
 public class Ahalya extends javax.swing.JFrame {
     
     String s1,str;
     String compiled;
-    String botname="Madhu";
+    String botname="Srinu";
     ChatterBotFactory factory = new ChatterBotFactory();
     
 
@@ -385,15 +386,15 @@ public class Ahalya extends javax.swing.JFrame {
     public void speaktts()
     {
            String voiceName = "kevin16";
-     VoiceManager voiceManager = null;
-     Voice voice = null;
+     VoiceManager voiceManager;
+     Voice voice;
  
      voiceManager = VoiceManager.getInstance();
      voice = voiceManager.getVoice(voiceName);
  
-     voice.setPitch((float) 200.00);
-     voice.setPitchShift((float) 1.03);
-     voice.setPitchRange((float) 13);
+     voice.setPitch((float) 120.00);
+     voice.setPitchShift((float) 1.003);
+     voice.setPitchRange((float) 11);
      // "business", "casual", "robotic", "breathy"
      voice.setStyle("casual");
             
