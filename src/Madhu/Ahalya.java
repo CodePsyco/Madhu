@@ -1,6 +1,7 @@
 
 package Madhu;
 
+
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -16,12 +17,18 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.google.code.chatterbotapi.*;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+import java.util.Locale;
+import javax.speech.Central;
+import javax.speech.synthesis.Synthesizer;
+import javax.speech.synthesis.SynthesizerModeDesc;
 
 public class Ahalya extends javax.swing.JFrame {
     
-    String s1;
+    String s1,str;
     String compiled;
-    String botname="MADHU";
+    String botname="Madhu";
     ChatterBotFactory factory = new ChatterBotFactory();
     
 
@@ -140,6 +147,7 @@ public class Ahalya extends javax.swing.JFrame {
         }
         jTextArea1.setText(compiled);
         jTextField1.setText("");
+        speaktts();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
@@ -224,6 +232,7 @@ public class Ahalya extends javax.swing.JFrame {
             s = s.replace("Chomsky", botname);
 
             compiled=compiled+"\n"+botname+": "+s;
+            str=s;
         }
         
         }
@@ -240,8 +249,8 @@ public class Ahalya extends javax.swing.JFrame {
             Document doc = db.parse(uc.getInputStream());
             doc.getDocumentElement().normalize();
             NodeList forecast = doc.getElementsByTagName("forecast");
-                for (int a = 0; a < forecast.getLength(); a++) {
-                    Node forecastNode = forecast.item(a);
+                for (int got = 0; got < forecast.getLength(); got++) {
+                    Node forecastNode = forecast.item(got);
                               compiled=compiled+"\n"+botname+"Today's weather Report for "+loc;
                     if (forecastNode.getNodeType() == Node.ELEMENT_NODE) {
                           Element forecastElement = (Element) forecastNode;
@@ -372,6 +381,29 @@ public class Ahalya extends javax.swing.JFrame {
       }
    
         compiled=compiled+"\n"+botname+": Sure! Currently Playing \n                     " + listOfFiles[i].getName(); 
+    }
+    public void speaktts()
+    {
+           String voiceName = "kevin16";
+     VoiceManager voiceManager = null;
+     Voice voice = null;
+ 
+     voiceManager = VoiceManager.getInstance();
+     voice = voiceManager.getVoice(voiceName);
+ 
+     voice.setPitch((float) 200.00);
+     voice.setPitchShift((float) 1.03);
+     voice.setPitchRange((float) 13);
+     // "business", "casual", "robotic", "breathy"
+     voice.setStyle("casual");
+            
+     //allocate the resources for the voice
+     voice.allocate();
+ 
+     // Create input stream from file
+          voice.speak(str);
+ 
+     voice.deallocate();
     }
    
             
