@@ -1,5 +1,1 @@
-Madhu
-=====
-
-A siri like application for pc
-This is still a working alpha verson. Not for release. 
+My first java application which uses AI to talk to you and can open songs in your folder
